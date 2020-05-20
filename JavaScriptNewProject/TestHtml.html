@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<script>
+		var list = [ {
+			item : "A",
+			quantity : 10,
+			rate : 150
+		}, {
+			item : "A",
+			quantity : 22,
+			rate : 50
+		}, {
+			item : "A",
+			quantity : 20,
+			rate : 150
+		},
+
+		{
+			item : "B",
+			quantity : 3,
+			rate : 200
+		}, {
+			item : "B",
+			quantity : 33,
+			rate : 20
+		}, {
+			item : "B",
+			quantity : 13,
+			rate : 200
+		},
+
+		{
+			item : "C",
+			quantity : 40,
+			rate : 10
+		}, {
+			item : "C",
+			quantity : 50,
+			rate : 100
+		}, {
+			item : "C",
+			quantity : 20,
+			rate : 10
+		}
+
+		], result = [];
+
+		list.forEach(function(hash) {
+			return function(a) {
+				if ((!hash[a.item])) {
+					hash[a.item] = {
+						item : a.item,
+						activities : []
+					}
+
+					result.push(hash[a.item]);
+				}
+
+				hash[a.item].activities.push({
+					rate : a.rate,
+					quantity : a.quantity
+
+				});
+			};
+		}(Object.create(null)));
+
+		console.log(result);
+	</script>
+
+	<h2>Test script</h2>
+
+</body>
+</html>

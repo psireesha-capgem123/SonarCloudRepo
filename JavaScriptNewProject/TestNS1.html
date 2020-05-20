@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+	<script>
+		var array = [ {
+			item : 'AAA',
+			rate : 10,
+			quantity : 1
+		}, {
+			item : 'AAA',
+			rate : 20,
+			quantity : 2
+		}, {
+			item : 'BBB',
+			rate : 40,
+			quantity : 0
+		}, {
+			item : 'AAA',
+			rate : 20,
+			quantity : 4
+		}, {
+			item : 'BBB',
+			rate : 30,
+			quantity : 1
+		}, {
+			item : 'BBB',
+			rate : 40,
+			quantity : 1
+		}, {
+			item : 'AAA',
+			rate : 10,
+			quantity : 4
+		}, {
+			item : 'AAA',
+			rate : 10,
+			quantity : 2
+		} ], hash = Object.create(null), grouped = [];
+
+		array.forEach(function(o) {
+			var key = [ 'item', 'rate' ].map(function(k) {
+				return o[k];
+			}).join('|');
+
+			if (!hash[key]) {
+				hash[key] = {
+					item : o.item,
+					rate : o.rate,
+					quantity : 0
+				};
+				grouped.push(hash[key]);
+			}
+			['quantity'].forEach(function(k) {
+				hash[key][k] += o[k];
+			});
+		});
+
+		console.log(grouped);
+	</script>
+
+	<h2>Test script</h2>
+
+</body>
+</html>
